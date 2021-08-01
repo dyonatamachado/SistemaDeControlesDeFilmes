@@ -83,3 +83,17 @@ Desativa o usuário com o Id informado pela rota. Se o usuário informado estive
 Reativa o usuário com o Id informado pela rota. Se o usuário informado estiver cadastrado mas já estiver ativo retorna 400. Caso não estiver cadastrado retorna 404. Caso seja encontrado e estiver inativo, a Api remove a marcação de Inativo e retorna 204.
 
 ## 3) Exibições
+
+Este Controlador é responsável pelo histórico de filmes assistidos por cada usuário. Pode ser acessado pela rota Exibicoes e tem 6 controles.
+
+### Post - Rota: /Exibicoes/
+#### Cria uma nova Exibição
+
+É necessário informar via Body os dados de FilmeId e UsuarioId ambos no formato numérico. Caso o filme ou o usuário não for encontrado a API retornará código 404. Se o filme já estiver no histórico de visualizações do usuário a API retornará 400. Em caso contrário, a API registrará a exibição e retornará 201 com a rota para acessar o recurso.
+
+### Delete - Rota: /Exibicoes/{id}
+
+
+
+
+
