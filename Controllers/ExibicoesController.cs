@@ -99,11 +99,11 @@ namespace SistemaDeControleDeFilmes.Controllers
             
             var usuarioValido = exibicaoService.UsuarioValido(input.UsuarioId);
             if(!usuarioValido)
-                return BadRequest("O usuário informado não está cadastrado ou está inativo.");
+                return NotFound("O usuário informado não está cadastrado ou está inativo.");
 
             var filmeValido = exibicaoService.FilmeValido(input.FilmeId);
             if(!filmeValido)
-                return BadRequest("O filme informado não está cadastrado ou está inativo.");
+                return NotFound("O filme informado não está cadastrado ou está inativo.");
             
             var exibicao = new Exibicao(input.UsuarioId, input.FilmeId);
 
@@ -119,7 +119,7 @@ namespace SistemaDeControleDeFilmes.Controllers
             var exibicao = _dbContext.Exibicoes.SingleOrDefault(e => e.Id == id);
 
             if(exibicao == null)
-                return BadRequest("Não existe exibição cadastrada com este ID.");
+                return NotFound("Não existe exibição cadastrada com este ID.");
             
             _dbContext.Exibicoes.Remove(exibicao);
             _dbContext.SaveChanges();
