@@ -119,7 +119,7 @@ namespace SistemaDeControleDeFilmes.Controllers
             var usuarioJaCadastrado = usuarioService.VerificarUsuarioCadastrado(input);
 
             if(usuario == null)
-                return BadRequest("Não existe usuário cadastrado com este ID.");
+                return NotFound("Não existe usuário cadastrado com este ID.");
             if(!usuario.Ativo)
                 return BadRequest("Usuário está inativo.");
             if(usuarioJaCadastrado.Id != usuario.Id)
@@ -137,7 +137,7 @@ namespace SistemaDeControleDeFilmes.Controllers
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == id);
             
             if(usuario == null)
-                return BadRequest("Não existe usuário cadastrado com este ID.");
+                return NotFound("Não existe usuário cadastrado com este ID.");
             
             if(usuario.Ativo)
                 return BadRequest("Usuário já está ativo.");
@@ -154,7 +154,7 @@ namespace SistemaDeControleDeFilmes.Controllers
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == id);
             
             if(usuario == null)
-                return BadRequest("Não existe usuário cadastrado com este ID.");
+                return NotFound("Não existe usuário cadastrado com este ID.");
             
             if(!usuario.Ativo)
                 return BadRequest("Usuário já está inativo.");
