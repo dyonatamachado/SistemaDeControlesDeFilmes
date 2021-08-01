@@ -14,14 +14,11 @@ namespace SistemaDeControleDeFilmes.Services
             _dbContext = dbContext;
         }
 
-        public bool VerificarUsuarioCadastrado(UsuarioInputBase input)
+        public Usuario VerificarUsuarioCadastrado(UsuarioInputBase input)
         {
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Cpf == input.CPF);
 
-            if(usuario == null)
-                return false;
-            else
-                return true;
+            return usuario;
         }
 
         public bool VerificarUsuarioAtivo(UsuarioInputBase input)

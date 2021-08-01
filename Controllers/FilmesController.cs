@@ -114,7 +114,7 @@ namespace SistemaDeControleDeFilmes.Controllers
 
             
             if(filme == null)
-                return BadRequest("Não existe filme cadastrado com este ID");
+                return NotFound("Não existe filme cadastrado com este ID");
             else
             {
                 if(filmeJaCadastrado != null && filme.Id != filmeJaCadastrado.Id)

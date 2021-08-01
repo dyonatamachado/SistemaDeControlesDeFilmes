@@ -94,11 +94,9 @@ namespace SistemaDeControleDeFilmes.Controllers
             var usuarioService = new UsuarioServices(_dbContext);
             var usuarioJaCadastrado = usuarioService.VerificarUsuarioCadastrado(input);
 
-            if(usuarioJaCadastrado)
+            if(usuarioJaCadastrado != null)
             {
-                var usuarioAtivo = usuarioService.VerificarUsuarioAtivo(input);
-
-                if(usuarioAtivo)
+                if(usuarioJaCadastrado.Ativo)
                     return BadRequest("Já existe usuário cadastrado com este CPF.");
                 else
                     return BadRequest("Já existe usuário cadastrado com este CPF porém está inativo.");
@@ -117,12 +115,15 @@ namespace SistemaDeControleDeFilmes.Controllers
         public IActionResult PutUsuario(int id, [FromBody] AtualizarUsuario input)
         {
             var usuario = _dbContext.Usuarios.SingleOrDefault(u => u.Id == id);
+            var usuarioService = new UsuarioServices(_dbContext);
+            var usuarioJaCadastrado = usuarioService.VerificarUsuarioCadastrado(input);
 
             if(usuario == null)
                 return BadRequest("Não existe usuário cadastrado com este ID.");
-            
             if(!usuario.Ativo)
                 return BadRequest("Usuário está inativo.");
+            if(usuarioJaCadastrado.Id != usuario.Id)
+                return BadRequest($"Já existe usuário cadastrado com o CPF que você quer atualizar, porém está com Id diferente do informado. Você pode acessá-lo pelo Id: {usuarioJaCadastrado}");
             
             usuario.AtualizarUsuario(input.Nome, input.CPF, input.DataDeNascimento);
             _dbContext.SaveChanges();
