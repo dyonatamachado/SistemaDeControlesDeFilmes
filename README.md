@@ -8,15 +8,15 @@ Veja abaixo as orientações de uso da Api:
 
 Este Controlador pode ser acessado pela rota Filmes e possui no total 7 controles.
 
-### Post - Rota: /Usuarios/
-#### Cadastra um Usuário no banco de dados
+### Post - Rota: /Filmes/
+#### Cadastra um Filme no banco de dados
 
-É necessário informar via Body os dados para cadastro de um novo usuário. Os dados necessários são: Nome, CPF, e Data de Nascimento. Todos são strings exceto a Data de Nasciment que é de formato DateTime. Todos os dados são obrigatórios. A Api avalia se já existe algum usuário cadastrado com o mesmo CPF se sim retornará o Status Code 400. Caso não exista, irá cadastrar o novo usuário e retornará Status Code 201 informando a rota para acessar o recurso criado. 
+É necessário informar via Body os dados para cadastro de um novo usuário. Os dados necessários são: Titulo, Genero, Sinopse e Ano. Todos os dados são strings exceto o ano que é de formato numérico. Todos os dados são obrigatórios. A Api avalia se já existe algum filme cadastrado com o mesmo Titulo e Ano se sim retornará o Status Code 400. Caso não exista, irá cadastrar o novo filme e retornará Status Code 201 informando a rota para acessar o recurso criado. 
 
-### Put - Rota: /Usuarios/{id}
-#### Atualiza dados de um Usuário já cadastrado e ativo
+### Put - Rota: /Filmes/{id}
+#### Atualiza dados de um Filme já cadastrado e ativo
 
-Para acessar este controlador é necessário informar pela rota, o Id do usuário que deseja atualizar. E é necessário informar via Body os dados Nome, CPF e Data de Nascimento conforme padrão de cadastro. A Api verifica se existe usuário com o Id informado, caso não exista retorna o Código 404. Caso exista, a Api verifica se os dados informados na requisição estão vinculados à algum filme no Banco de Dados e em caso positivo compara com o Id informado e havendo inconsistência retorna o Código 400. A Api ainda verifica se o filme com o Id informado está ativo no BD. Em caso de filme cadastrado mas inativo, retorna 400 informando a necessidade de reativar o filme. Se nenhum destes se aplicar, a API então atualiza o recurso no BD e retorna 204.
+Para acessar este controlador é necessário informar pela rota, o Id do filme que deseja atualizar. E é necessário informar via Body os dados de Titulo, Genero, Sinopse e Ano conforme o padrão. A Api verifica se existe filme com o Id informado, caso não exista retorna o Código 404. Caso exista, a Api verifica se os dados informados na requisição estão vinculados à algum filme no Banco de Dados e em caso positivo compara com o Id informado e havendo inconsistência retorna o Código 400. A Api ainda verifica se o filme com o Id informado está ativo no BD. Em caso de filme cadastrado mas inativo, retorna 400 informando a necessidade de reativar o filme. Se nenhum destes se aplicar, a API então atualiza o recurso no BD e retorna 204.
 
 ### Get - Rota: /Filmes/
 #### Retorna todos os filmes cadastrados e ativos
