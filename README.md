@@ -81,3 +81,5 @@ Desativa o usuário com o Id informado pela rota. Se o usuário informado estive
 #### Reativa o usuário com o Id informado
 
 Reativa o usuário com o Id informado pela rota. Se o usuário informado estiver cadastrado mas já estiver ativo retorna 400. Caso não estiver cadastrado retorna 404. Caso seja encontrado e estiver inativo, a Api remove a marcação de Inativo e retorna 204.
+
+## 3) Exibições
