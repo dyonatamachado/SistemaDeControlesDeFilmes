@@ -89,9 +89,36 @@ Este Controlador é responsável pelo histórico de filmes assistidos por cada u
 ### Post - Rota: /Exibicoes/
 #### Cria uma nova Exibição
 
-É necessário informar via Body os dados de FilmeId e UsuarioId ambos no formato numérico. Caso o filme ou o usuário não for encontrado a API retornará código 404. Se o filme já estiver no histórico de visualizações do usuário a API retornará 400. Em caso contrário, a API registrará a exibição e retornará 201 com a rota para acessar o recurso.
+É necessário informar via Body os dados de FilmeId e UsuarioId ambos no formato numérico. Caso o filme ou o usuário não for encontrado a API retornará código 400. Se o filme já estiver no histórico de visualizações do usuário a API retornará 400. Em caso contrário, a API registrará a exibição e retornará 201 com a rota para acessar o recurso.
 
 ### Delete - Rota: /Exibicoes/{id}
+#### Apaga o registro de exibição
+
+Apaga o registro de exibição com o Id informado via rota. A Api retorna 404 caso a exibição não seja localizada ou 204 caso encontrada. Neste caso o recurso de fato é apagado do banco de dados. 
+
+### Get - Rota: /Exibicoes/
+#### Retorna todas as exibições cadastradas
+
+A API pode retornar 204 caso não haja nenhuma exibição cadastrada ou 200 caso haja e então retorna a lista de exibições.
+
+### Get - Rota: /Exibicoes/{id}
+#### Retorna a exibição com o Id especificado
+
+A API pode retornar 404 caso não haja nenhuma exibição com este ID ou 200 caso haja e então lista os dados da exibição.
+
+### Get - Rota: /Exibicoes/UsuarioId/{usuarioId}
+#### Retorna todas as exibições cadastradas para o usuário informado
+
+A API pode retornar 404 caso não haja nenhuma exibição cadastrada para este usuário. Pode retonar 200 com a lista de exibições deste usuário.
+
+### Get - Rota: /Exibicoes/FilmeId/{filmeId}
+#### Retorna todas as exibições cadastradas para o filme informado
+
+A API pode retornar 404 caso não haja nenhuma exibição cadastrada para o filme informado. Pode retonar 200 com a lista de exibições deste filme.
+
+
+
+
 
 
 
