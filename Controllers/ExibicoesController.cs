@@ -75,7 +75,7 @@ namespace SistemaDeControleDeFilmes.Controllers
             var exibicoes = _dbContext.Exibicoes.Where(e => e.FilmeId == filmeId).ToList();
             var exibicoesViewList = new List<ViewExibicao>();
             if(exibicoes.Count == 0)
-                return NotFound("Este usário não assistiu nenhum filme até o momento.");
+                return NotFound("Este filme não possui nenhum espectador até o momento.");
             
             foreach (var exibicao in exibicoes)
             {
@@ -99,11 +99,11 @@ namespace SistemaDeControleDeFilmes.Controllers
             
             var usuarioValido = exibicaoService.UsuarioValido(input.UsuarioId);
             if(!usuarioValido)
-                return NotFound("O usuário informado não está cadastrado ou está inativo.");
+                return BadRequest("O usuário informado não está cadastrado ou está inativo.");
 
             var filmeValido = exibicaoService.FilmeValido(input.FilmeId);
             if(!filmeValido)
-                return NotFound("O filme informado não está cadastrado ou está inativo.");
+                return BadRequest("O filme informado não está cadastrado ou está inativo.");
             
             var exibicao = new Exibicao(input.UsuarioId, input.FilmeId);
 
